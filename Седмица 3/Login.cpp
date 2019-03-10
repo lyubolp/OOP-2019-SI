@@ -5,10 +5,11 @@
 Login::Login(): sessionType(0)
 {
     username = new char[5];
-    username = "test\0";
+    strcpy(username, "1234");
 
     password = new char[5];
-    password = "1234\0";
+    
+    strcpy(password, "1234");
 }
 Login::Login(char* user):sessionType(1)
 {
