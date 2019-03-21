@@ -141,6 +141,14 @@ int MyVector::get_size() const
     return size;
 }
 
+int MyVector::operator[](int pos) const
+{
+    if(pos > size)
+        return -1;
+    else
+        return values[pos];
+       
+}
 MyVector::~MyVector()
 {
     delete[] values;

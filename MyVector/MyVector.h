@@ -25,5 +25,7 @@ class MyVector
         int end() const;
         int get_size() const;
 
+        int operator[](int) const;
+
         ~MyVector();
 };
