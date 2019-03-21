@@ -15,6 +15,24 @@ MyVector::MyVector(const MyVector& rhs): size(rhs.size), maxSize(rhs.maxSize)
         values[i] = rhs.values[i];
     }
 }
+MyVector& MyVector::operator=(const MyVector& rhs)
+{
+    if(this != &rhs)
+    {
+        delete[] values;
+
+        maxSize = rhs.maxSize;
+        size = rhs.size;
+
+        values = new int[maxSize];
+
+        for(int i = 0; i < size; i++)
+        {
+            values[i] = rhs.values[i];
+        }
+    }
+    return *this;
+}
 void MyVector::resize()
 {
     maxSize*=2;
@@ -121,5 +139,10 @@ int MyVector::end() const
 int MyVector::get_size() const
 {
     return size;
+}
+
+MyVector::~MyVector()
+{
+    delete[] values;
 }
 

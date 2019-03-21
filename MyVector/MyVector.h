@@ -11,6 +11,7 @@ class MyVector
     public:
         MyVector(); //Default
         MyVector(const MyVector&); //Copy
+        MyVector& operator=(const MyVector&); //Operator=
 
         void set_element(int, int); //pos, val
         void push_back(int);
@@ -24,5 +25,5 @@ class MyVector
         int end() const;
         int get_size() const;
 
-
+        ~MyVector();
 };
