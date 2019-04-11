@@ -54,7 +54,23 @@ Bank& Bank::operator= (const Bank& object_to_copy_from)
     }
     return *this;
 }
-        
+       
+void Bank::resize()
+{
+    if(capacity != 0)capacity *=2;
+    else capacity = 1;
+
+    Account* new_accounts = new Account[capacity];
+
+    for(int i = 0; i < amount; i++)
+    {
+        new_accounts[i] = accounts[i];
+    }
+
+    delete[] accounts;
+
+    accounts = new_accounts;
+}
 void Bank::set_name(const char* new_name)
 {
     int size = strlen(new_name);
