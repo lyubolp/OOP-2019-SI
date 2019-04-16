@@ -28,6 +28,8 @@ class MyVector
         int get_size() const;
         T operator[](int) const;
 
+        char* return_value_as_cstring() const;
+
         friend std::ostream& operator << (std::ostream& out, const MyVector&);
         friend std::istream& operator >> (std::istream& in, MyVector&);
         ~MyVector();
@@ -99,7 +101,7 @@ template <class T>
 void MyVector<T>::push_back(T val)
 {
     if(size == maxSize)
-        resize();
+        resize();   
 
     values[size] = val;
     size++;
@@ -194,6 +196,12 @@ int MyVector<T>::get_size() const
     return size;
 }
 
+template <>
+char* MyVector<char>::return_value_as_cstring() const
+{
+    return values;
+}
+
 template <class T>
 T MyVector<T>::operator[](int pos) const
 {
@@ -234,5 +242,9 @@ std::istream& operator >> (std::istream& in, MyVector<T>& v)
         in >> t;
         v.push_back(t);
     }   
+
+    return in;
 }
+
+
 
